@@ -93,6 +93,13 @@ body.page-loaded .home-graphic {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
+}
+
+.navbar-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-links {
