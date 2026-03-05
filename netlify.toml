@@ -1,6 +1,7 @@
 [build]
   publish = "."
   command = "echo Done"
+  image = "ubuntu-focal"
 
 [build.environment]
   NODE_VERSION = "18"
