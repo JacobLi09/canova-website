@@ -97,9 +97,10 @@ body.page-loaded .home-graphic {
 }
 
 .navbar-logo {
-    height: 50px;
+    height: 70px;
     width: auto;
     object-fit: contain;
+    margin-left: 1rem;
 }
 
 .nav-links {
