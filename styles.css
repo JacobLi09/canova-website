@@ -967,6 +967,17 @@ body.page-loaded .home-graphic {
     .team-row {
         gap: 2rem;
     }
+
+    .team-container .team-row {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-container .team-member {
+        width: 100%;
+        max-width: 320px;
+    }
     
     .team-circle {
         width: 150px;
