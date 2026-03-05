@@ -1,3 +1,6 @@
+# Netlify configuration for Canova website
+# Static site deployment with redirects for SPA support
+
 [build]
   publish = "."
   command = "echo Done"
