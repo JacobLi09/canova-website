@@ -268,17 +268,20 @@ function changeLanguage(lang) {
     localStorage.setItem('preferredLanguage', lang);
 }
 
-// Language selector event listener
-document.getElementById('languageSelect').addEventListener('change', (e) => {
-    changeLanguage(e.target.value);
-});
-
-// Load saved language preference on page load
+// Load saved language preference and setup on page load
 window.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-    document.getElementById('languageSelect').value = savedLang;
-    if (savedLang !== 'en') {
-        changeLanguage(savedLang);
+    // Language selector event listener
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+        languageSelect.addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+        
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        languageSelect.value = savedLang;
+        if (savedLang !== 'en') {
+            changeLanguage(savedLang);
+        }
     }
     
     // Page load animation
@@ -324,23 +327,25 @@ if (aboutContent) {
 // About Us button on home screen
 const homeButtons = document.querySelectorAll('.home-btn');
 homeButtons.forEach(button => {
-    if (button.textContent === 'About Us') {
+    if (button.textContent === 'About Us' || button.textContent === 'À propos' || button.textContent === 'من نحن' || button.textContent === '关于我们') {
         button.addEventListener('click', () => {
-            document.getElementById('about').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            window.location.href = 'about.html';
         });
     }
-    if (button.textContent === 'Mentee Sign-up') {
+    if (button.textContent === 'Mentee Sign-up' || button.textContent === 'Inscription Mentoré' || button.textContent === 'تسجيل متدرب' || button.textContent === '学员注册') {
         button.addEventListener('click', () => {
-            document.getElementById('mentee').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            window.location.href = 'mentee.html';
         });
     }
 });
+
+// Vision "Learn More" button
+const visionBtn = document.querySelector('.vision-btn');
+if (visionBtn) {
+    visionBtn.addEventListener('click', () => {
+        window.location.href = 'about.html';
+    });
+}
 
 // Animate mentee section on scroll
 const menteeContent = document.querySelector('.mentee-content');
