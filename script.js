@@ -54,7 +54,7 @@ const translations = {
         
         // Footer
         footerTitle: "Contact Us",
-        footerCopyright: "© 2025 Canova."
+        footerCopyright: "© 2026 Canova."
     },
     zh: {
         // Navigation
@@ -110,7 +110,7 @@ const translations = {
         
         // Footer
         footerTitle: "联系我们",
-        footerCopyright: "© 2025 Canova."
+        footerCopyright: "© 2026 Canova."
     },
     fr: {
         // Navigation
@@ -166,7 +166,7 @@ const translations = {
         
         // Footer
         footerTitle: "Contactez-nous",
-        footerCopyright: "© 2025 Canova."
+        footerCopyright: "© 2026 Canova."
     },
     ar: {
         // Navigation
@@ -222,7 +222,7 @@ const translations = {
         
         // Footer
         footerTitle: "اتصل بنا",
-        footerCopyright: "© 2025 Canova."
+        footerCopyright: "© 2026 Canova."
     }
 };
 
