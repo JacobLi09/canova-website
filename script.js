@@ -39,8 +39,13 @@ const translations = {
         menteeBtn: "Mentee Sign-Up Form",
         
         // Mentor signup
-        mentorTitle: "Sign up as a Mentor Now!!",
-        mentorSubtitle: "Fill out the form below and we will be in touch within a few days.",
+        mentorTitle: "Do You Need Volunteer Hours?",
+        mentorSubtitle: "Fill out the form below to sign up as a Mentor!! We will be in touch within a few days.",
+        mentorRequirementsHeading: "What we are looking for:",
+        mentorReq1: "Fluency in English",
+        mentorReq2: "Availability and Consistency",
+        mentorReq3: "Honour Roll Students",
+        mentorReq4: "Communication skills",
         mentorBtn: "Mentor Sign-up Form",
         
         // Team section
@@ -90,8 +95,13 @@ const translations = {
         menteeBtn: "学员注册表格",
         
         // Mentor signup
-        mentorTitle: "立即注册成为导师！！",
-        mentorSubtitle: "填写下面的表格，我们将在几天内与您联系。",
+        mentorTitle: "您需要志愿者小时吗？",
+        mentorSubtitle: "填写下面的表格注册成为导师！！我们将在几天内与您联系。",
+        mentorRequirementsHeading: "我们正在寻找：",
+        mentorReq1: "英语流利",
+        mentorReq2: "可用性和一致性",
+        mentorReq3: "荣誉榜学生",
+        mentorReq4: "沟通技巧",
         mentorBtn: "导师注册表格",
         
         // Team section
@@ -141,8 +151,13 @@ const translations = {
         menteeBtn: "Formulaire d'inscription Mentoré",
         
         // Mentor signup
-        mentorTitle: "Inscrivez-vous comme Mentor Maintenant !!",
-        mentorSubtitle: "Remplissez le formulaire ci-dessous et nous vous contacterons dans quelques jours.",
+        mentorTitle: "Avez-vous besoin d'heures de bénévolat ?",
+        mentorSubtitle: "Remplissez le formulaire ci-dessous pour vous inscrire en tant que Mentor !! Nous vous contacterons dans quelques jours.",
+        mentorRequirementsHeading: "Ce que nous recherchons :",
+        mentorReq1: "Maîtrise de l'anglais",
+        mentorReq2: "Disponibilité et cohérence",
+        mentorReq3: "Élèves du tableau d'honneur",
+        mentorReq4: "Compétences en communication",
         mentorBtn: "Formulaire d'inscription Mentor",
         
         // Team section
@@ -192,8 +207,13 @@ const translations = {
         menteeBtn: "نموذج تسجيل المتدرب",
         
         // Mentor signup
-        mentorTitle: "سجل كمرشد الآن !!",
-        mentorSubtitle: "املأ النموذج أدناه وسنتواصل معك خلال أيام قليلة.",
+        mentorTitle: "هل تحتاج إلى ساعات تطوعية؟",
+        mentorSubtitle: "املأ النموذج أدناه للتسجيل كمرشد !! سنتواصل معك في غضون أيام قليلة.",
+        mentorRequirementsHeading: "ما نبحث عنه:",
+        mentorReq1: "الطلاقة في اللغة الإنجليزية",
+        mentorReq2: "التوفر والاتساق",
+        mentorReq3: "طلاب قائمة الشرف",
+        mentorReq4: "مهارات التواصل",
         mentorBtn: "نموذج تسجيل المرشد",
         
         // Team section
@@ -210,56 +230,77 @@ const translations = {
 function changeLanguage(lang) {
     const t = translations[lang];
     
+    // Helper function to safely update element
+    const updateElement = (selector, property, value) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element[property] = value;
+        }
+    };
+    
     // Update navigation
-    document.querySelector('.nav-links li:nth-child(1) a').textContent = t.navHome;
-    document.querySelector('.nav-links li:nth-child(2) a').textContent = t.navAbout;
-    document.querySelector('.nav-links li:nth-child(3) a').textContent = t.navMentor;
-    document.querySelector('.nav-links li:nth-child(4) a').textContent = t.navMentee;
+    updateElement('.nav-links li:nth-child(1) a', 'textContent', t.navHome);
+    updateElement('.nav-links li:nth-child(2) a', 'textContent', t.navAbout);
+    updateElement('.nav-links li:nth-child(3) a', 'textContent', t.navMentor);
+    updateElement('.nav-links li:nth-child(4) a', 'textContent', t.navMentee);
     
     // Update home section
-    document.querySelector('.home-title').textContent = t.homeTitle;
-    document.querySelector('.home-subtitle').textContent = t.homeSubtitle;
-    document.querySelector('.home-description').textContent = t.homeDescription;
-    document.querySelectorAll('.home-btn')[0].textContent = t.homeBtnMentee;
-    document.querySelectorAll('.home-btn')[1].textContent = t.homeBtnAbout;
+    updateElement('.home-title', 'textContent', t.homeTitle);
+    updateElement('.home-subtitle', 'textContent', t.homeSubtitle);
+    updateElement('.home-description', 'textContent', t.homeDescription);
+    const homeBtns = document.querySelectorAll('.home-btn');
+    if (homeBtns.length >= 2) {
+        homeBtns[0].textContent = t.homeBtnMentee;
+        homeBtns[1].textContent = t.homeBtnAbout;
+    }
     
     // Update vision section
-    document.querySelector('.vision-title').textContent = t.visionTitle;
-    document.querySelector('.vision-description').textContent = t.visionDescription;
-    document.querySelector('.vision-btn').textContent = t.visionBtn;
+    updateElement('.vision-title', 'textContent', t.visionTitle);
+    updateElement('.vision-description', 'textContent', t.visionDescription);
+    updateElement('.vision-btn', 'textContent', t.visionBtn);
     
     // Update services section
-    document.querySelector('.services-title').textContent = t.servicesTitle;
+    updateElement('.services-title', 'textContent', t.servicesTitle);
     const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards[0].querySelector('.service-name').textContent = t.serviceMentoringTitle;
-    serviceCards[0].querySelector('.service-description').innerHTML = t.serviceMentoringDesc;
-    serviceCards[1].querySelector('.service-name').textContent = t.serviceTutoringTitle;
-    serviceCards[1].querySelector('.service-description').innerHTML = t.serviceTutoringDesc;
-    serviceCards[2].querySelector('.service-name').textContent = t.serviceHomeworkTitle;
-    serviceCards[2].querySelector('.service-description').innerHTML = t.serviceHomeworkDesc;
+    if (serviceCards.length >= 3) {
+        updateElement('.service-card:nth-child(1) .service-name', 'textContent', t.serviceMentoringTitle);
+        updateElement('.service-card:nth-child(1) .service-description', 'innerHTML', t.serviceMentoringDesc);
+        updateElement('.service-card:nth-child(2) .service-name', 'textContent', t.serviceTutoringTitle);
+        updateElement('.service-card:nth-child(2) .service-description', 'innerHTML', t.serviceTutoringDesc);
+        updateElement('.service-card:nth-child(3) .service-name', 'textContent', t.serviceHomeworkTitle);
+        updateElement('.service-card:nth-child(3) .service-description', 'innerHTML', t.serviceHomeworkDesc);
+    }
     
     // Update about section
-    document.querySelector('.about-title').textContent = t.aboutTitle;
-    document.querySelector('.about-subtitle').textContent = t.aboutSubtitle;
-    document.querySelector('.about-description').textContent = t.aboutDescription;
+    updateElement('.about-title', 'textContent', t.aboutTitle);
+    updateElement('.about-subtitle', 'textContent', t.aboutSubtitle);
+    updateElement('.about-description', 'textContent', t.aboutDescription);
     
     // Update mentee section
-    document.querySelector('.mentee-title').textContent = t.menteeTitle;
-    document.querySelector('.mentee-subtitle').textContent = t.menteeSubtitle;
-    document.querySelector('.mentee-btn').textContent = t.menteeBtn;
+    updateElement('.mentee-title', 'textContent', t.menteeTitle);
+    updateElement('.mentee-subtitle', 'textContent', t.menteeSubtitle);
+    updateElement('.mentee-btn', 'textContent', t.menteeBtn);
     
     // Update mentor section
-    document.querySelector('.mentor-title').textContent = t.mentorTitle;
-    document.querySelector('.mentor-subtitle').textContent = t.mentorSubtitle;
-    document.querySelector('.mentor-btn').textContent = t.mentorBtn;
+    updateElement('.mentor-title', 'textContent', t.mentorTitle);
+    updateElement('.mentor-subtitle', 'textContent', t.mentorSubtitle);
+    updateElement('.requirements-heading', 'textContent', t.mentorRequirementsHeading);
+    const reqList = document.querySelectorAll('.requirements-list li');
+    if (reqList.length >= 4) {
+        reqList[0].textContent = t.mentorReq1;
+        reqList[1].textContent = t.mentorReq2;
+        reqList[2].textContent = t.mentorReq3;
+        reqList[3].textContent = t.mentorReq4;
+    }
+    updateElement('.mentor-btn', 'textContent', t.mentorBtn);
     
     // Update team section
-    document.querySelector('.team-title').textContent = t.teamTitle;
-    document.querySelector('.advisors-title').textContent = t.advisorsTitle;
+    updateElement('.team-title', 'textContent', t.teamTitle);
+    updateElement('.advisors-title', 'textContent', t.advisorsTitle);
     
     // Update footer
-    document.querySelector('.footer-title').textContent = t.footerTitle;
-    document.querySelector('.footer-copyright').textContent = t.footerCopyright;
+    updateElement('.footer-title', 'textContent', t.footerTitle);
+    updateElement('.footer-copyright', 'textContent', t.footerCopyright);
     
     // Update HTML lang attribute
     document.documentElement.lang = lang;
@@ -277,8 +318,11 @@ window.addEventListener('DOMContentLoaded', () => {
             changeLanguage(e.target.value);
         });
         
+        // Get saved language or default to English
         const savedLang = localStorage.getItem('preferredLanguage') || 'en';
         languageSelect.value = savedLang;
+        
+        // Only apply language changes if not English (since English is the default HTML content)
         if (savedLang !== 'en') {
             changeLanguage(savedLang);
         }
