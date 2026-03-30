@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentee Sign-up - Canova</title>
+    <title>Mentor Portal - Canova</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="page-loading">
@@ -28,18 +28,46 @@
         </div>
     </nav>
 
-    <section class="mentee-signup" id="mentee" style="margin-top: 120px; min-height: 80vh;">
-        <div class="mentee-content">
-            <div class="mentee-text">
-                <h2 class="mentee-title">Sign up as a Mentee Now !!</h2>
-                <p class="mentee-subtitle">Fill out the form below and we will be in touch within a few days.</p>
-                <button class="mentee-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScs2zpTqxPdAQpBk4D53STy0YAyJtk_Uyi7zuVWt-JgDgeX0w/viewform', '_blank')">Mentee Sign-Up Form</button>
+    <section class="portal-section" id="portal" style="margin-top: 120px; min-height: 80vh;">
+        <div class="portal-content">
+            <div class="portal-image">
+                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&h=600&fit=crop" alt="Education resources and books">
             </div>
-            <div class="mentee-image">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop" alt="Mentor helping student">
+            <div class="portal-text">
+                <h2 class="portal-title">Canova Mentor Archive</h2>
+                <p class="portal-subtitle">Access exclusive teaching resources and materials for your mentoring sessions.</p>
+                <div class="portal-resources">
+                    <h3 class="resources-heading">What you'll find in the archive:</h3>
+                    <ul class="resources-list">
+                        <li>Lesson Plans and Teaching Guides</li>
+                        <li>Educational Activities</li>
+                        <li>Resources and Tools</li>
+                    </ul>
+                </div>
+                <p class="portal-note">This resource library is exclusively for registered Canova mentors.</p>
+                <button class="portal-btn" onclick="showPasswordModal()">Access Archive</button>
             </div>
         </div>
     </section>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="password-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mentor Portal Access</h2>
+                <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Enter your mentor password to access the archive:</p>
+                <input type="password" id="portalPassword" class="password-input" placeholder="Enter password">
+                <div id="passwordError" class="password-error"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="closePasswordModal()">Cancel</button>
+                <button class="modal-btn modal-btn-submit" onclick="verifyPassword()">Access Archive</button>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-content">

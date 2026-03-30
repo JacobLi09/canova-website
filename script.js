@@ -6,6 +6,7 @@ const translations = {
         navAbout: "About Us",
         navMentor: "Mentor Sign-up",
         navMentee: "Mentee Sign-up",
+        navPortal: "Mentor Portal",
         
         // Home section
         homeTitle: "CANOVA",
@@ -48,6 +49,18 @@ const translations = {
         mentorReq4: "Communication skills",
         mentorBtn: "Mentor Sign-up Form",
         
+        // Mentor Portal
+        portalTitle: "Canova Mentor Archive",
+        portalSubtitle: "Access exclusive teaching resources and materials for your mentoring sessions.",
+        portalResourcesHeading: "What you'll find in the archive:",
+        portalRes1: "Lesson plans and teaching guides",
+        portalRes2: "Educational worksheets and activities",
+        portalRes3: "Language learning resources",
+        portalRes4: "Cultural integration materials",
+        portalRes5: "Homework help templates",
+        portalNote: "This resource library is exclusively for registered Canova mentors.",
+        portalBtn: "Access Archive",
+        
         // Team section
         teamTitle: "Meet the Team",
         advisorsTitle: "Volunteer Advisors",
@@ -62,6 +75,7 @@ const translations = {
         navAbout: "关于我们",
         navMentor: "导师注册",
         navMentee: "学员注册",
+        navPortal: "导师门户",
         
         // Home section
         homeTitle: "CANOVA",
@@ -104,6 +118,30 @@ const translations = {
         mentorReq4: "沟通技巧",
         mentorBtn: "导师注册表格",
         
+        // Mentor Portal
+        portalTitle: "Canova 导师档案库",
+        portalSubtitle: "访问专属教学资源和材料以用于您的辅导课程。",
+        portalResourcesHeading: "档案库中的内容：",
+        portalRes1: "课程计划和教学指南",
+        portalRes2: "教育工作表和活动",
+        portalRes3: "语言学习资源",
+        portalRes4: "文化融合材料",
+        portalRes5: "作业帮助模板",
+        portalNote: "此资源库仅供注册Canova导师使用。",
+        portalBtn: "访问档案库",
+        
+        // Mentor Portal
+        portalTitle: "Canova 导师档案库",
+        portalSubtitle: "访问专属教学资源和材料以用于您的辅导课程。",
+        portalResourcesHeading: "档案库中的内容：",
+        portalRes1: "课程计划和教学指南",
+        portalRes2: "教育工作表和活动",
+        portalRes3: "语言学习资源",
+        portalRes4: "文化融合材料",
+        portalRes5: "作业帮助模板",
+        portalNote: "此资源库仅供注册Canova导师使用。",
+        portalBtn: "访问档案库",
+        
         // Team section
         teamTitle: "认识我们的团队",
         advisorsTitle: "志愿顾问",
@@ -118,6 +156,7 @@ const translations = {
         navAbout: "À propos",
         navMentor: "Inscription Mentor",
         navMentee: "Inscription Mentoré",
+        navPortal: "Portail Mentor",
         
         // Home section
         homeTitle: "CANOVA",
@@ -160,6 +199,18 @@ const translations = {
         mentorReq4: "Compétences en communication",
         mentorBtn: "Formulaire d'inscription Mentor",
         
+        // Mentor Portal
+        portalTitle: "Archives des Mentors Canova",
+        portalSubtitle: "Accédez à des ressources et matériels d'enseignement exclusifs pour vos sessions de mentorat.",
+        portalResourcesHeading: "Ce que vous trouverez dans les archives :",
+        portalRes1: "Plans de leçon et guides pédagogiques",
+        portalRes2: "Fiches d'exercices et activités éducatives",
+        portalRes3: "Ressources d'apprentissage des langues",
+        portalRes4: "Matériaux d'intégration culturelle",
+        portalRes5: "Modèles d'aide aux devoirs",
+        portalNote: "Cette bibliothèque de ressources est exclusivement destinée aux mentors Canova enregistrés.",
+        portalBtn: "Accéder aux Archives",
+        
         // Team section
         teamTitle: "Rencontrez l'équipe",
         advisorsTitle: "Conseillers bénévoles",
@@ -174,6 +225,7 @@ const translations = {
         navAbout: "من نحن",
         navMentor: "تسجيل مرشد",
         navMentee: "تسجيل متدرب",
+        navPortal: "بوابة المرشد",
         
         // Home section
         homeTitle: "CANOVA",
@@ -216,6 +268,18 @@ const translations = {
         mentorReq4: "مهارات التواصل",
         mentorBtn: "نموذج تسجيل المرشد",
         
+        // Mentor Portal
+        portalTitle: "أرشيف مرشدي Canova",
+        portalSubtitle: "احصل على موارد التدريس والمواد الحصرية لجلسات الإرشاد الخاصة بك.",
+        portalResourcesHeading: "ما ستجده في الأرشيف:",
+        portalRes1: "خطط الدروس وأدلة التدريس",
+        portalRes2: "أوراق عمل وأنشطة تعليمية",
+        portalRes3: "موارد تعلم اللغة",
+        portalRes4: "مواد الاندماج الثقافي",
+        portalRes5: "قوالب مساعدة الواجبات المنزلية",
+        portalNote: "هذه مكتبة الموارد حصرية لمرشدي Canova المسجلين.",
+        portalBtn: "الوصول إلى الأرشيف",
+        
         // Team section
         teamTitle: "تعرف على الفريق",
         advisorsTitle: "المستشارون المتطوعون",
@@ -243,6 +307,7 @@ function changeLanguage(lang) {
     updateElement('.nav-links li:nth-child(2) a', 'textContent', t.navAbout);
     updateElement('.nav-links li:nth-child(3) a', 'textContent', t.navMentor);
     updateElement('.nav-links li:nth-child(4) a', 'textContent', t.navMentee);
+    updateElement('.nav-links li:nth-child(5) a', 'textContent', t.navPortal);
     
     // Update home section
     updateElement('.home-title', 'textContent', t.homeTitle);
@@ -293,6 +358,21 @@ function changeLanguage(lang) {
         reqList[3].textContent = t.mentorReq4;
     }
     updateElement('.mentor-btn', 'textContent', t.mentorBtn);
+    
+    // Update portal section
+    updateElement('.portal-title', 'textContent', t.portalTitle);
+    updateElement('.portal-subtitle', 'textContent', t.portalSubtitle);
+    updateElement('.resources-heading', 'textContent', t.portalResourcesHeading);
+    const resList = document.querySelectorAll('.resources-list li');
+    if (resList.length >= 5) {
+        resList[0].textContent = t.portalRes1;
+        resList[1].textContent = t.portalRes2;
+        resList[2].textContent = t.portalRes3;
+        resList[3].textContent = t.portalRes4;
+        resList[4].textContent = t.portalRes5;
+    }
+    updateElement('.portal-note', 'textContent', t.portalNote);
+    updateElement('.portal-btn', 'textContent', t.portalBtn);
     
     // Update team section
     updateElement('.team-title', 'textContent', t.teamTitle);
@@ -403,6 +483,12 @@ if (mentorContent) {
     observer.observe(mentorContent);
 }
 
+// Animate portal section on scroll
+const portalContent = document.querySelector('.portal-content');
+if (portalContent) {
+    observer.observe(portalContent);
+}
+
 // Animate team section on scroll
 const teamTitle = document.querySelector('.team-title');
 const teamRows = document.querySelectorAll('.team-row');
@@ -433,4 +519,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Portal password modal functions
+function showPasswordModal() {
+    const modal = document.getElementById('passwordModal');
+    if (modal) {
+        modal.classList.add('active');
+        // Focus on input after modal opens
+        setTimeout(() => {
+            const input = document.getElementById('portalPassword');
+            if (input) input.focus();
+        }, 100);
+    }
+}
+
+function closePasswordModal() {
+    const modal = document.getElementById('passwordModal');
+    if (modal) {
+        modal.classList.remove('active');
+        // Clear input and error
+        const input = document.getElementById('portalPassword');
+        const error = document.getElementById('passwordError');
+        if (input) input.value = '';
+        if (error) error.textContent = '';
+    }
+}
+
+function verifyPassword() {
+    const input = document.getElementById('portalPassword');
+    const error = document.getElementById('passwordError');
+    
+    if (input.value === "12345678") {
+        closePasswordModal();
+        // Open the Canova Archive document
+        window.open('https://docs.google.com/document/d/11fy59iabYHLVAs0MFc8KE5U-WtiOvo253bJqe4V8GGw/edit?tab=t.0#heading=h.m9uncyu5fqbw', '_blank');
+    } else {
+        error.textContent = "Incorrect password. Please try again or contact administrators.";
+    }
+}
+
+// Allow Enter key to submit password
+document.addEventListener('DOMContentLoaded', () => {
+    const passwordInput = document.getElementById('portalPassword');
+    if (passwordInput) {
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                verifyPassword();
+            }
+        });
+    }
+});
 
