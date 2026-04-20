@@ -35,6 +35,8 @@ const translations = {
         aboutDescription: "Canova was first started in 2024 by two students in Ontario: Carina Chiew and Victor Ge. Our student-led mentorship/tutoring program is dedicated to supporting immigrant children as they navigate their new educational journey in Canada. Our mission is to provide personalized tutoring and mentorship to help these students overcome language barriers, build academic confidence, and feel empowered in their new community. Through compassion, understanding, and guidance, our team of passionate mentors is committed to helping each student reach their full potential and succeed academically and personally!",
         
         // Mentee signup
+        menteeGrowthLabel: "Mentee Growth Snapshot",
+        menteeGrowthSubtitle: "Mentee registration growth from 2025",
         menteeTitle: "Sign up as a Mentee Now !!",
         menteeSubtitle: "Fill out the form below and we will be in touch within a few days.",
         menteeBtn: "Mentee Sign-Up Form",
@@ -104,6 +106,8 @@ const translations = {
         aboutDescription: "Canova于2024年由安大略省的两名学生创立：Carina Chiew和Victor Ge。我们的学生主导的辅导/教学项目致力于支持移民儿童在加拿大的新教育旅程。我们的使命是提供个性化的教学和辅导，帮助这些学生克服语言障碍，建立学术信心，并在新社区中感到有力量。通过同情心、理解和指导，我们充满热情的导师团队致力于帮助每个学生发挥潜力，在学术和个人方面取得成功！",
         
         // Mentee signup
+        menteeGrowthLabel: "学员增长快照",
+        menteeGrowthSubtitle: "自2025年以来学员注册增长",
         menteeTitle: "立即注册成为学员！！",
         menteeSubtitle: "填写下面的表格，我们将在几天内与您联系。",
         menteeBtn: "学员注册表格",
@@ -185,6 +189,8 @@ const translations = {
         aboutDescription: "Canova a été créé en 2024 par deux étudiants de l'Ontario : Carina Chiew et Victor Ge. Notre programme de mentorat/tutorat dirigé par des étudiants est dédié à soutenir les enfants immigrants alors qu'ils naviguent dans leur nouveau parcours éducatif au Canada. Notre mission est de fournir un tutorat et un mentorat personnalisés pour aider ces étudiants à surmonter les barrières linguistiques, à développer la confiance académique et à se sentir autonomes dans leur nouvelle communauté. Par la compassion, la compréhension et l'orientation, notre équipe de mentors passionnés s'engage à aider chaque étudiant à atteindre son plein potentiel et à réussir académiquement et personnellement !",
         
         // Mentee signup
+        menteeGrowthLabel: "Apercu de la croissance des mentorés",
+        menteeGrowthSubtitle: "Croissance des inscriptions de mentorés depuis 2025",
         menteeTitle: "Inscrivez-vous comme Mentoré Maintenant !!",
         menteeSubtitle: "Remplissez le formulaire ci-dessous et nous vous contacterons dans quelques jours.",
         menteeBtn: "Formulaire d'inscription Mentoré",
@@ -254,6 +260,8 @@ const translations = {
         aboutDescription: "تأسست Canova لأول مرة في عام 2024 من قبل طالبين في أونتاريو: كارينا تشيو وفيكتور جي. برنامجنا للإرشاد/التدريس بقيادة الطلاب مخصص لدعم الأطفال المهاجرين أثناء تنقلهم في رحلتهم التعليمية الجديدة في كندا. مهمتنا هي توفير التدريس والإرشاد الشخصي لمساعدة هؤلاء الطلاب على التغلب على حواجز اللغة، وبناء الثقة الأكاديمية، والشعور بالقوة في مجتمعهم الجديد. من خلال التعاطف والفهم والتوجيه، يلتزم فريق المرشدين المتحمسين لدينا بمساعدة كل طالب على الوصول إلى إمكاناته الكاملة والنجاح أكاديميًا وشخصيًا!",
         
         // Mentee signup
+        menteeGrowthLabel: "لقطة لنمو المتدربين",
+        menteeGrowthSubtitle: "نمو تسجيل المتدربين منذ عام 2025",
         menteeTitle: "سجل كمتدرب الآن !!",
         menteeSubtitle: "املأ النموذج أدناه وسنتواصل معك خلال أيام قليلة.",
         menteeBtn: "نموذج تسجيل المتدرب",
@@ -342,6 +350,8 @@ function changeLanguage(lang) {
     updateElement('.about-description', 'textContent', t.aboutDescription);
     
     // Update mentee section
+    updateElement('.mentee-growth-label', 'textContent', t.menteeGrowthLabel);
+    updateElement('.mentee-growth-subtitle', 'textContent', t.menteeGrowthSubtitle);
     updateElement('.mentee-title', 'textContent', t.menteeTitle);
     updateElement('.mentee-subtitle', 'textContent', t.menteeSubtitle);
     updateElement('.mentee-btn', 'textContent', t.menteeBtn);
@@ -475,6 +485,22 @@ if (visionBtn) {
 const menteeContent = document.querySelector('.mentee-content');
 if (menteeContent) {
     observer.observe(menteeContent);
+}
+
+const menteeGrowthHero = document.querySelector('.mentee-growth-hero');
+if (menteeGrowthHero) {
+    const growthObserver = new IntersectionObserver((entries, growthObs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-slots');
+                growthObs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.45
+    });
+
+    growthObserver.observe(menteeGrowthHero);
 }
 
 // Animate mentor section on scroll
