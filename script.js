@@ -550,9 +550,9 @@ function showPasswordModal() {
     const modal = document.getElementById('passwordModal');
     if (modal) {
         modal.classList.add('active');
-        // Focus on input after modal opens
+        // Focus on email input after modal opens
         setTimeout(() => {
-            const input = document.getElementById('portalPassword');
+            const input = document.getElementById('portalEmail');
             if (input) input.focus();
         }, 100);
     }
@@ -562,34 +562,114 @@ function closePasswordModal() {
     const modal = document.getElementById('passwordModal');
     if (modal) {
         modal.classList.remove('active');
-        // Clear input and error
-        const input = document.getElementById('portalPassword');
+        // Clear inputs and error
+        const emailInput = document.getElementById('portalEmail');
+        const passwordInput = document.getElementById('portalPassword');
         const error = document.getElementById('passwordError');
-        if (input) input.value = '';
+        if (emailInput) emailInput.value = '';
+        if (passwordInput) passwordInput.value = '';
         if (error) error.textContent = '';
     }
 }
 
 function verifyPassword() {
-    const input = document.getElementById('portalPassword');
+    // Mentor credentials database
+    const mentors = {
+        'carina.s.chiew@gmail.com': { name: 'Carina Chiew', password: 'Carina2601', status: 'Active' },
+        'victorsongyege@gmail.com': { name: 'Victor Ge', password: 'Victor2602', status: 'Active' },
+        'allenli2020li@gmail.com': { name: 'Allen Li', password: 'Allen2603', status: 'Active' },
+        'felix.shen.nz@gmail.com': { name: 'Felix Shen', password: 'Felix2604', status: 'Active' },
+        'katie.chiew@gmail.com': { name: 'Katie Chiew', password: 'Katie2605', status: 'Active' },
+        'zain.preksha@gmail.com': { name: 'Preksha Jain', password: 'Preksha2606', status: 'Active' },
+        'ethan.soh360@gmail.com': { name: 'Ethan Soh', password: 'Ethan2607', status: 'Active' },
+        'eric.zhao021@gmail.com': { name: 'Eric Zhao', password: 'Eric2608', status: 'Active' },
+        'mahmoud.salem2809@gmail.com': { name: 'Mahmoud Salem', password: 'Mahmoud2609', status: 'Active' },
+        'walrianzhang@gmail.com': { name: 'Walrian Zhang', password: 'Walrian2610', status: 'Active' },
+        'stephanieliang38@gmail.com': { name: 'Stephanie Liang', password: 'Stephanie2611', status: 'Active' },
+        'eumsein@gmail.com': { name: 'Sein Eum', password: 'Sein2612', status: 'Active' },
+        'ram1.shankari@gmail.com': { name: 'Shankari Ramashan', password: 'Shankari2613', status: 'Active' },
+        'arianadorry1@gmail.com': { name: 'Ariana Dorry', password: 'Ariana2614', status: 'Active' },
+        'jacobli0910@gmail.com': { name: 'Jacob Li', password: 'Jacob2615', status: 'Active' },
+        'dqlam.le@gmail.com': { name: 'Do Quynh Lam Le', password: 'Do2616', status: 'Active' },
+        'jonathanwangzy@gmail.com': { name: 'Jonathan Wang', password: 'Jonathan2617', status: 'Active' },
+        'anushkachittari@gmail.com': { name: 'Anushka Chittari', password: 'Anushka2618', status: 'Active' },
+        'amybcan@gmail.com': { name: 'Amy Buchler', password: 'Amy2619', status: 'Active' },
+        'sarah.dai228@gmail.com': { name: 'Sarah Dai', password: 'Sarah2620', status: 'Active' },
+        'chloe.huang6666@gmail.com': { name: 'Chloe Huang', password: 'Chloe2621', status: 'Active' },
+        'charitykwanoioi@gmail.com': { name: 'Charity Kwan', password: 'Charity2622', status: 'Active' },
+        'lilypadfrog123@gmail.com': { name: 'Stacey Yu', password: 'Stacey2623', status: 'Active' },
+        'anya.thadani@gmail.com': { name: 'Anya Thadani', password: 'Anya2624', status: 'Active' },
+        'juliettesafarian@gmail.com': { name: 'Juliette Safarian', password: 'Juliette2625', status: 'Active' },
+        'muntra.dadjoo@gmail.com': { name: 'Muntra Dadjoo', password: 'Muntra2626', status: 'Active' },
+        'cyrine.zaari@gmail.com': { name: 'Cyrine Zaari', password: 'Cyrine2627', status: 'Active' },
+        'guiroy1123@gmail.com': { name: 'Roy Gui', password: 'Roy2628', status: 'Active' },
+        'ms.avitaah@gmail.com': { name: 'Avitaah Majur', password: 'Avitaah2629', status: 'Active' },
+        'maxwellw16a2@gmail.com': { name: 'Maxwell Wang', password: 'Maxwell2630', status: 'Active' },
+        'torahmahr@gmail.com': { name: 'Rahmah Rizwan', password: 'Rahmah2631', status: 'Active' },
+        'julianr.eav@gmail.com': { name: 'Julian Eav', password: 'Julian2632', status: 'Active' },
+        'purple7782@gmail.com': { name: 'Aparna Singh', password: 'Aparna2633', status: 'Active' },
+        'jordan.s.simmonds@gmail.com': { name: 'Jordan Simmonds', password: 'Jordan2634', status: 'Active' },
+        'illiakianif@gmail.com': { name: 'Illia Kiani Flavarjani', password: 'Illia2635', status: 'Active' },
+        'livyandlulu@gmail.com': { name: 'Olivia Song', password: 'Olivia2636', status: 'Active' },
+        'arjunmittal2024@gmail.com': { name: 'Arjun Mittal', password: 'Arjun2637', status: 'Active' },
+        'laila.b1133@gmail.com': { name: 'Laila Barghouti', password: 'Laila2638', status: 'Active' },
+        'dimitrie.simon@gmail.com': { name: 'Dimitrie Simon', password: 'Dimitrie2639', status: 'Active' },
+        'dsolanor92@gmail.com': { name: 'Diego David Solano Rodriguez', password: 'Diego2640', status: 'Active' }
+    };
+    
+    const emailInput = document.getElementById('portalEmail');
+    const passwordInput = document.getElementById('portalPassword');
     const error = document.getElementById('passwordError');
     
-    if (input.value === "12345678") {
+    const email = emailInput.value.toLowerCase().trim();
+    const password = passwordInput.value;
+    
+    // Check if email exists in database
+    if (!mentors[email]) {
+        error.textContent = "Email not found. Please contact administrators if you believe this is an error.";
+        return;
+    }
+    
+    const mentor = mentors[email];
+    
+    // Check if mentor is active
+    if (mentor.status !== 'Active') {
+        error.textContent = "Your account is pending approval. Please contact administrators.";
+        return;
+    }
+    
+    // Check password
+    if (mentor.password === password) {
         closePasswordModal();
+        // Store login for session
+        sessionStorage.setItem('mentorName', mentor.name);
         // Open the Canova Archive document
         window.open('https://docs.google.com/document/d/11fy59iabYHLVAs0MFc8KE5U-WtiOvo253bJqe4V8GGw/edit?tab=t.0#heading=h.m9uncyu5fqbw', '_blank');
     } else {
         error.textContent = "Incorrect password. Please try again or contact administrators.";
+        passwordInput.value = '';
     }
 }
 
 // Allow Enter key to submit password
 document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('portalPassword');
+    const emailInput = document.getElementById('portalEmail');
+    
     if (passwordInput) {
         passwordInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 verifyPassword();
+            }
+        });
+    }
+    
+    if (emailInput) {
+        emailInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                // Move to password field if email is filled
+                const pwd = document.getElementById('portalPassword');
+                if (pwd) pwd.focus();
             }
         });
     }

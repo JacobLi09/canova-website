@@ -50,16 +50,17 @@
         </div>
     </section>
 
-    <!-- Password Modal -->
+    <!-- Login Modal -->
     <div id="passwordModal" class="password-modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Mentor Portal Access</h2>
+                <h2>Mentor Portal Login</h2>
                 <button class="modal-close" onclick="closePasswordModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Enter your mentor password to access the archive:</p>
-                <input type="password" id="portalPassword" class="password-input" placeholder="Enter password">
+                <p>Please enter your credentials to access the archive:</p>
+                <input type="email" id="portalEmail" class="password-input" placeholder="Enter your email" style="margin-bottom: 12px;">
+                <input type="password" id="portalPassword" class="password-input" placeholder="Enter your password">
                 <div id="passwordError" class="password-error"></div>
             </div>
             <div class="modal-footer">
