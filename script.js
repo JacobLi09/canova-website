@@ -624,7 +624,6 @@ function verifyPassword() {
     const email = emailInput.value.toLowerCase().trim();
     const password = passwordInput.value;
     
-    // Check if email exists in database
     if (!mentors[email]) {
         error.textContent = "Email not found. Please contact administrators if you believe this is an error.";
         return;
@@ -632,18 +631,13 @@ function verifyPassword() {
     
     const mentor = mentors[email];
     
-    // Check if mentor is active
     if (mentor.status !== 'Active') {
         error.textContent = "Your account is pending approval. Please contact administrators.";
         return;
     }
     
-    // Check password
     if (mentor.password === password) {
         closePasswordModal();
-        // Store login for session
-        sessionStorage.setItem('mentorName', mentor.name);
-        // Open the Canova Archive document
         window.open('https://docs.google.com/document/d/11fy59iabYHLVAs0MFc8KE5U-WtiOvo253bJqe4V8GGw/edit?tab=t.0#heading=h.m9uncyu5fqbw', '_blank');
     } else {
         error.textContent = "Incorrect password. Please try again or contact administrators.";
@@ -667,7 +661,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emailInput) {
         emailInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                // Move to password field if email is filled
                 const pwd = document.getElementById('portalPassword');
                 if (pwd) pwd.focus();
             }

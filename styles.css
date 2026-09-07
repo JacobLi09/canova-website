@@ -912,6 +912,228 @@ body.page-loaded .home-graphic {
     display: block;
 }
 
+/* Mentor Dashboard */
+.dashboard-page {
+    background: linear-gradient(180deg, #fffaf7 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    background: linear-gradient(135deg, var(--canova-red), #9f1630);
+    padding: 1.5rem 2rem 1.25rem;
+    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.2);
+}
+
+.dashboard-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.dashboard-header .navbar-logo {
+    height: 46px;
+    margin-left: 0;
+}
+
+.dashboard-user {
+    flex: 1;
+    color: white;
+}
+
+.dashboard-user .welcome-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-user h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.2;
+}
+
+.logout-btn {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 0.8rem 1.3rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.dashboard-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
+
+.dashboard-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: white;
+    border: 1px solid rgba(196, 30, 58, 0.08);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.summary-card .card-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+}
+
+.summary-card .card-value {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--canova-red);
+}
+
+.summary-card .card-note {
+    margin-top: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-panel {
+    background: white;
+    border-radius: 18px;
+    border: 1px solid rgba(196, 30, 58, 0.08);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    padding: 1.5rem;
+}
+
+.dashboard-panel h2 {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    color: var(--canova-red);
+    font-size: 1.7rem;
+}
+
+.resource-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.resource-item {
+    background: #fff8f8;
+    border: 1px solid rgba(196, 30, 58, 0.08);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+}
+
+.resource-item h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+}
+
+.resource-item p {
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #fdf6f7;
+    border-radius: 10px;
+    padding: 0.8rem 0.9rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+.checklist li::before {
+    content: "✓";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: rgba(196, 30, 58, 0.12);
+    color: var(--canova-red);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.action-link,
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.9rem 1.3rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.action-link {
+    background: rgba(196, 30, 58, 0.08);
+    color: var(--canova-red);
+}
+
+.action-btn {
+    border: none;
+    background: var(--canova-red);
+    color: white;
+    box-shadow: 0 10px 25px rgba(196, 30, 58, 0.25);
+}
+
+.action-link:hover,
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
 /* Password Modal */
 .password-modal {
     display: none;
@@ -1490,6 +1712,35 @@ body.page-loaded .home-graphic {
     }
     
     .portal-btn {
+        width: 100%;
+    }
+
+    .dashboard-header {
+        padding: 1.2rem 1rem 1rem;
+    }
+
+    .dashboard-header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .dashboard-shell {
+        padding: 1.25rem 1rem 3rem;
+    }
+
+    .dashboard-summary,
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .action-link,
+    .action-btn {
         width: 100%;
     }
     
