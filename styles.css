@@ -1091,7 +1091,7 @@ body.page-loaded .home-graphic {
     justify-content: center;
     gap: 3rem;
     margin-bottom: 3rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -1102,8 +1102,8 @@ body.page-loaded .home-graphic {
     transform: translateY(0);
 }
 
-.team-row-centered {
-    max-width: 1200px;
+.team-row-three {
+    max-width: 980px;
     margin: 0 auto 3rem;
 }
 
