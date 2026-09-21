@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Canova — Mentor Game Dashboard</title>
+	<link rel="stylesheet" href="game.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body class="game-page">
+	<header class="hud">
+		<div class="player-card">
+			<div class="avatar" id="avatar">CT</div>
+			<div class="player-info">
+				<div class="level" id="playerLevel">Level 3 Scholar</div>
+				<div class="streak" id="playerStreak">🔥 4-Week Streak</div>
+			</div>
+			<div class="hours">
+				<div class="hours-label">Volunteer Hours</div>
+				<div class="hours-bar">
+					<div class="hours-fill" id="hoursFill" style="width: 0%"></div>
+				</div>
+				<div class="hours-text" id="hoursText">0 / 25 hrs</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="dashboard-grid">
+		<section class="left-col">
+			<div class="section-header">
+				<h2>Active Quests</h2>
+				<button id="addQuestBtn" class="btn">+ Add New Quest</button>
+			</div>
+			<div id="questsList" class="quests-list" role="list"></div>
+
+			<div class="skill-panel">
+				<div class="section-header skill-header">
+					<h2>English Skill Tree</h2>
+					<a href="skill-tree.html" class="btn secondary-link">Open full map</a>
+				</div>
+				<div id="skillTree" class="skill-tree"></div>
+			</div>
+		</section>
+
+		<section class="right-col">
+			<div class="session-log">
+				<h3>Quick Session Log</h3>
+				<form id="sessionForm" class="session-form">
+					<label>Date <input type="date" id="sessionDate" required></label>
+					<label>Duration (hrs) <input type="number" id="sessionHours" step="0.25" min="0" required></label>
+					<label>Focus Area <input type="text" id="sessionFocus" placeholder="e.g., Reading practice" required></label>
+					<label>One-line note <input type="text" id="sessionNote" placeholder="1-sentence takeaway" required></label>
+					<div class="form-actions"><button type="submit" class="btn primary">Log Session</button></div>
+				</form>
+			</div>
+
+			<div class="session-history">
+				<h3>Session History</h3>
+				<div class="history-table-wrap">
+					<table id="sessionsTable" class="history-table">
+						<thead><tr><th>Date</th><th>Hours</th><th>Focus</th><th>Note</th><th>Status</th></tr></thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="vault">
+		<h3>Achievement Vault</h3>
+		<div id="badges" class="badges"></div>
+	</footer>
+
+	<!-- Add Quest Modal -->
+	<div id="questModal" class="modal" aria-hidden="true">
+		<div class="modal-panel">
+			<button class="modal-close" id="closeQuestModal">×</button>
+			<h4>Add New Quest</h4>
+			<form id="questForm">
+				<label>Title <input id="questTitle" required></label>
+				<label>Category 
+					<select id="questCategory">
+						<option>Academic</option>
+						<option>Career</option>
+						<option>Personal</option>
+					</select>
+				</label>
+				<div class="form-actions"><button class="btn primary" type="submit">Create Quest</button></div>
+			</form>
+		</div>
+	</div>
+
+	<script src="game.js" defer></script>
+</body>
+</html>
