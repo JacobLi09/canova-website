@@ -614,7 +614,17 @@ function verifyPassword() {
         'arjunmittal2024@gmail.com',
         'laila.b1133@gmail.com',
         'dimitrie.simon@gmail.com',
-        'dsolanor92@gmail.com'
+        'dsolanor92@gmail.com',
+        'rayzhao724@gmail.com',
+        'willhong724@gmail.com',
+        'jkang052021@gmail.com',
+        'misha.thadani@gmail.com',
+        'anonymousxih2009@gmail.com',
+        'faridnadia.n@gmail.com',
+        '349936690@tdsb.ca',
+        'joshuaychang@gmail.com',
+        'moussavisetareh@gmail.com',
+        'mmehk23@gmail.com'
     ];
     const PENDING_MENTOR_EMAILS = [
         'jacoblukabassett@gmail.com',
