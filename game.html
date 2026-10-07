@@ -15,6 +15,15 @@
 				<div class="level" id="playerLevel">Level 3 Scholar</div>
 				<div class="streak" id="playerStreak">🔥 4-Week Streak</div>
 			</div>
+			<div class="xp-stack">
+				<div class="xp-header">
+					<span>EXP</span>
+					<span id="xpValue">420 XP</span>
+				</div>
+				<div class="xp-bar">
+					<div class="xp-fill" id="xpFill" style="width: 0%"></div>
+				</div>
+			</div>
 			<div class="hours">
 				<div class="hours-label">Volunteer Hours</div>
 				<div class="hours-bar">
@@ -78,6 +87,7 @@
 			<h4>Add New Quest</h4>
 			<form id="questForm">
 				<label>Title <input id="questTitle" required></label>
+				<label>Description <textarea id="questDescription" rows="3" required></textarea></label>
 				<label>Category 
 					<select id="questCategory">
 						<option>Academic</option>
@@ -85,6 +95,7 @@
 						<option>Personal</option>
 					</select>
 				</label>
+				<label>XP Reward <input id="questXp" type="number" min="10" step="5" value="25" required></label>
 				<div class="form-actions"><button class="btn primary" type="submit">Create Quest</button></div>
 			</form>
 		</div>

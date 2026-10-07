@@ -15,6 +15,10 @@
 .player-info{flex:1}
 .level{font-weight:800;font-size:1.05rem;font-family:Patrick Hand, Inter, sans-serif}
 .streak{color:var(--muted);font-size:0.95rem}
+.xp-stack{width:220px}
+.xp-header{display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;color:var(--muted);font-weight:800;margin-bottom:0.35rem}
+.xp-bar{height:14px;background:linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.03));border-radius:999px;overflow:hidden;border:1px solid rgba(138,75,47,0.06)}
+.xp-fill{height:100%;background:linear-gradient(90deg,#d9713c,#f5c86b);width:10%;box-shadow:inset 0 -4px 8px rgba(0,0,0,0.06)}
 .hours{width:260px;text-align:right}
 .hours-label{font-size:0.85rem;color:var(--muted);margin-bottom:0.25rem}
 .hours-bar{height:14px;background:linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.03));border-radius:999px;overflow:hidden;border:1px solid rgba(138,75,47,0.06)}
@@ -31,9 +35,13 @@
 .quest-card{display:flex;align-items:center;gap:0.9rem;background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--paper-shadow);transition:transform .18s ease,box-shadow .18s ease;position:relative}
 .quest-card::before{content:'';position:absolute;inset:0;border-radius:12px;transform:rotate(-0.6deg);background:linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,250,245,0.02));z-index:0}
 .quest-card > *{position:relative;z-index:1}
+.quest-card.completed{border:1px solid rgba(73,162,84,0.25);background:#f5fff7}
 .quest-meta{flex:1}
-.quest-title{font-weight:700;margin:0;font-family:Patrick Hand, Inter, sans-serif}
-.quest-tag{display:inline-block;padding:0.18rem 0.45rem;border-radius:999px;font-size:0.8rem;background:rgba(138,75,47,0.06);color:var(--muted);margin-top:0.35rem}
+.quest-title{font-weight:700;margin:0;font-family:Patrick Hand, Inter, sans-serif;font-size:1.15rem}
+.quest-description{margin-top:0.4rem;color:var(--muted);font-size:0.9rem;line-height:1.4}
+.quest-footer{display:flex;align-items:center;justify-content:space-between;gap:0.75rem;margin-top:0.7rem}
+.quest-tag{display:inline-block;padding:0.18rem 0.45rem;border-radius:999px;font-size:0.8rem;background:rgba(138,75,47,0.06);color:var(--muted)}
+.quest-xp{font-size:0.82rem;font-weight:800;color:var(--canova-red)}
 .quest-actions{display:flex;align-items:center;gap:0.6rem}
 .check-sat{width:46px;height:46px;border-radius:12px;border:1px solid rgba(30,27,24,0.06);display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fffdfb;box-shadow:0 6px 12px rgba(15,23,42,0.04)}
 .check-sat.completed{background:linear-gradient(135deg,#6fe67a,#2da84a);color:white;border:none;transform:scale(1.03)}
@@ -113,8 +121,10 @@
 
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(18,16,14,0.2), rgba(255,255,255,0.02));z-index:60}
 .modal[aria-hidden="false"]{display:flex}
-.modal-panel{background:var(--card);padding:1.25rem;border-radius:12px;min-width:320px;max-width:420px;box-shadow:var(--paper-shadow);border:1px solid rgba(138,75,47,0.04)}
-.modal-close{position:absolute;right:1rem;top:1rem;background:transparent;border:none;font-size:1.4rem;cursor:pointer}
+.modal-panel{background:var(--card);padding:1.25rem;border-radius:12px;min-width:320px;max-width:420px;box-shadow:var(--paper-shadow);border:1px solid rgba(138,75,47,0.04);position:relative}
+.modal-panel label{display:flex;flex-direction:column;gap:0.35rem;font-size:0.9rem;color:var(--muted);margin-bottom:0.8rem}
+.modal-panel input, .modal-panel textarea, .modal-panel select{width:100%;padding:0.7rem 0.8rem;border:1px solid rgba(30,27,24,0.08);border-radius:10px;background:#fff;resize:vertical;font:inherit}
+.modal-close{position:absolute;right:1rem;top:1rem;background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted)}
 
 /* Responsive */
 @media (max-width:900px){.dashboard-grid{grid-template-columns:1fr;}.hours{display:none}.session-form{grid-template-columns:1fr}.form-actions{justify-content:flex-start}}

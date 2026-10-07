@@ -2,50 +2,80 @@
 
 const STORAGE_KEY = 'canova_game_v1';
 
-const initialState = {
-  currentUser: {
-    id: 'u1',
-    name: 'Carina',
-    initials: 'CT',
-    role: 'mentor', // mentor | mentee | admin
-    level: 3,
-    xp: 420,
-    hours: 18.5,
-    streakWeeks: 4
-  },
-  quests: [
-    { id: 'q1', title: 'Complete first reading lesson', category: 'Academic', completed: false },
-    { id: 'q2', title: 'Set short-term career goal', category: 'Career', completed: false },
-    { id: 'q3', title: 'Prepare personal introduction', category: 'Personal', completed: true }
-  ],
-  sessions: [
-    { id: 's1', date: '2026-09-01', hours: 1.5, focus: 'Reading', note: 'Reviewed short story', status: 'Verified' },
-    { id: 's2', date: '2026-09-08', hours: 2, focus: 'Conversation', note: 'Pronunciation practice', status: 'Pending' }
-  ],
-  badges: [
-    { id: 'b1', name: 'Starter', unlockAt: 1, unlocked: true },
-    { id: 'b2', name: '10 Hours', unlockAt: 10, unlocked: true },
-    { id: 'b3', name: '25 Hours', unlockAt: 25, unlocked: false }
-  ],
-  skillTrees: {
-    english: {
-      id: 'english',
-      title: 'English Skill Tree',
-      subject: 'English',
-      summary: 'Build confidence through vocabulary, reading, writing, speaking, and discussion.',
-      nodes: [
-        { id: 'vocab', title: 'Word Power', branch: 'Vocabulary', xp: 35, description: 'Build core vocabulary and confidence with everyday words.', tasks: ['Learn 10 everyday English words', 'Use them in 3 short sentences', 'Say them aloud in a quick practice round'], completed: true, requires: [] },
-        { id: 'reading', title: 'Reading Fluency', branch: 'Reading', xp: 50, description: 'Practice short texts and sentence understanding.', tasks: ['Read a short passage aloud', 'Highlight 5 key ideas', 'Answer 3 comprehension prompts'], completed: false, requires: ['vocab'] },
-        { id: 'grammar', title: 'Grammar Basics', branch: 'Grammar', xp: 55, description: 'Use key sentence patterns with confidence and clarity.', tasks: ['Identify subject and verb in 5 sentences', 'Rewrite 3 simple sentences', 'Practice one grammar mini-check'], completed: false, requires: ['vocab'] },
-        { id: 'writing', title: 'Writing Basics', branch: 'Writing', xp: 60, description: 'Build simple sentence structure and writing flow.', tasks: ['Write 3 topic sentences', 'Add supporting detail to each one', 'Review grammar with a mentor'], completed: false, requires: ['grammar'] },
-        { id: 'speaking', title: 'Conversation Spark', branch: 'Speaking', xp: 75, description: 'Speak with confidence in everyday situations.', tasks: ['Lead a 2-minute introduction', 'Practice a short conversation prompt', 'Ask and answer follow-up questions'], completed: false, requires: ['reading', 'grammar'] },
-        { id: 'analysis', title: 'Discussion & Analysis', branch: 'Critical Thinking', xp: 85, description: 'Turn reading and writing into thoughtful discussion and response.', tasks: ['Share one opinion with support', 'Summarize a reading in your own words', 'Respond to a question with evidence'], completed: false, requires: ['reading', 'writing'] }
-      ]
+function getXpGoalForLevel(level) {
+  return 100 + Math.max(0, level - 1) * 125;
+}
+
+function createFreshState() {
+  return {
+    currentUser: {
+      id: 'u1',
+      name: 'Carina',
+      initials: 'CT',
+      role: 'mentor', // mentor | mentee | admin
+      level: 1,
+      xp: 0,
+      xpGoal: getXpGoalForLevel(1),
+      xpIntoLevel: 0,
+      hours: 0,
+      streakWeeks: 0
+    },
+    quests: [
+      { id: 'q1', title: 'Complete first reading lesson', description: 'Read a short text and write 3 sentences explaining the main idea.', category: 'Academic', xpReward: 50, completed: false },
+      { id: 'q2', title: 'Set short-term career goal', description: 'Choose one realistic goal for the next month and write a simple plan.', category: 'Career', xpReward: 35, completed: false },
+      { id: 'q3', title: 'Prepare personal introduction', description: 'Practice a polished 60-second intro with your name, goals, and strengths.', category: 'Personal', xpReward: 25, completed: false }
+    ],
+    sessions: [],
+    badges: [
+      { id: 'b1', name: 'Starter', unlockAt: 1, unlocked: false },
+      { id: 'b2', name: '10 Hours', unlockAt: 10, unlocked: false },
+      { id: 'b3', name: '25 Hours', unlockAt: 25, unlocked: false }
+    ],
+    skillTrees: {
+      english: {
+        id: 'english',
+        title: 'English Skill Tree',
+        subject: 'English',
+        summary: 'Build confidence through vocabulary, reading, writing, speaking, and discussion.',
+        nodes: [
+          { id: 'vocab', title: 'Word Power', branch: 'Vocabulary', xp: 35, description: 'Build core vocabulary and confidence with everyday words.', tasks: ['Learn 10 everyday English words', 'Use them in 3 short sentences', 'Say them aloud in a quick practice round'], completed: false, requires: [] },
+          { id: 'reading', title: 'Reading Fluency', branch: 'Reading', xp: 50, description: 'Practice short texts and sentence understanding.', tasks: ['Read a short passage aloud', 'Highlight 5 key ideas', 'Answer 3 comprehension prompts'], completed: false, requires: ['vocab'] },
+          { id: 'grammar', title: 'Grammar Basics', branch: 'Grammar', xp: 55, description: 'Use key sentence patterns with confidence and clarity.', tasks: ['Identify subject and verb in 5 sentences', 'Rewrite 3 simple sentences', 'Practice one grammar mini-check'], completed: false, requires: ['vocab'] },
+          { id: 'writing', title: 'Writing Basics', branch: 'Writing', xp: 60, description: 'Build simple sentence structure and writing flow.', tasks: ['Write 3 topic sentences', 'Add supporting detail to each one', 'Review grammar with a mentor'], completed: false, requires: ['grammar'] },
+          { id: 'speaking', title: 'Conversation Spark', branch: 'Speaking', xp: 75, description: 'Speak with confidence in everyday situations.', tasks: ['Lead a 2-minute introduction', 'Practice a short conversation prompt', 'Ask and answer follow-up questions'], completed: false, requires: ['reading', 'grammar'] },
+          { id: 'analysis', title: 'Discussion & Analysis', branch: 'Critical Thinking', xp: 85, description: 'Turn reading and writing into thoughtful discussion and response.', tasks: ['Share one opinion with support', 'Summarize a reading in your own words', 'Respond to a question with evidence'], completed: false, requires: ['reading', 'writing'] }
+        ]
+      }
     }
-  }
-};
+  };
+}
+
+const initialState = createFreshState();
 
 let state = loadState() || initialState;
+
+function syncPlayerProgress() {
+  const totalXp = Math.max(0, Number(state.currentUser.xp) || 0);
+  let level = 1;
+  let xpIntoLevel = totalXp;
+  let xpGoal = getXpGoalForLevel(level);
+
+  while (xpIntoLevel >= xpGoal) {
+    xpIntoLevel -= xpGoal;
+    level += 1;
+    xpGoal = getXpGoalForLevel(level);
+  }
+
+  state.currentUser.level = level;
+  state.currentUser.xpGoal = xpGoal;
+  state.currentUser.xpIntoLevel = xpIntoLevel;
+  state.currentUser.xp = totalXp;
+}
+
+function resetProgress() {
+  state = createFreshState();
+  saveState();
+}
 
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -64,12 +94,15 @@ function formatDate(d){return new Date(d).toLocaleDateString()}
 
 // Rendering
 function renderHUD(){
+  syncPlayerProgress();
   const u = state.currentUser;
   const avatar = document.getElementById('avatar');
   const playerLevel = document.getElementById('playerLevel');
   const playerStreak = document.getElementById('playerStreak');
   const hoursFill = document.getElementById('hoursFill');
   const hoursText = document.getElementById('hoursText');
+  const xpFill = document.getElementById('xpFill');
+  const xpValue = document.getElementById('xpValue');
 
   if (avatar) avatar.textContent = u.initials;
   if (playerLevel) playerLevel.textContent = `Level ${u.level} Scholar`;
@@ -77,6 +110,11 @@ function renderHUD(){
   const pct = Math.min(100, Math.round((u.hours / 25) * 100));
   if (hoursFill) hoursFill.style.width = pct + '%';
   if (hoursText) hoursText.textContent = `${u.hours} / 25 hrs`;
+
+  const xpGoal = u.xpGoal || getXpGoalForLevel(u.level || 1);
+  const xpPct = Math.min(100, Math.round((u.xpIntoLevel / xpGoal) * 100));
+  if (xpFill) xpFill.style.width = xpPct + '%';
+  if (xpValue) xpValue.textContent = `${u.xp} XP`;
 }
 
 function renderQuests(){
@@ -85,19 +123,37 @@ function renderQuests(){
   list.innerHTML = '';
   state.quests.forEach(q => {
     const card = document.createElement('div');
-    card.className = 'quest-card';
+    card.className = 'quest-card' + (q.completed ? ' completed' : '');
     card.setAttribute('data-id', q.id);
 
     const meta = document.createElement('div');
     meta.className = 'quest-meta';
+
     const title = document.createElement('div');
     title.className = 'quest-title';
     title.textContent = q.title;
+
+    const description = document.createElement('div');
+    description.className = 'quest-description';
+    description.textContent = q.description || 'No description yet.';
+
+    const footer = document.createElement('div');
+    footer.className = 'quest-footer';
+
     const tag = document.createElement('div');
     tag.className = 'quest-tag';
     tag.textContent = q.category;
+
+    const xp = document.createElement('div');
+    xp.className = 'quest-xp';
+    xp.textContent = `+${q.xpReward || 25} XP`;
+
+    footer.appendChild(tag);
+    footer.appendChild(xp);
+
     meta.appendChild(title);
-    meta.appendChild(tag);
+    meta.appendChild(description);
+    meta.appendChild(footer);
 
     const actions = document.createElement('div');
     actions.className = 'quest-actions';
@@ -106,6 +162,7 @@ function renderQuests(){
     chk.setAttribute('role','button');
     chk.setAttribute('aria-pressed', q.completed);
     chk.innerHTML = q.completed ? '✓' : '';
+    chk.title = q.completed ? 'Completed' : `Award ${q.xpReward || 25} XP`;
     chk.addEventListener('click', ()=> toggleQuestComplete(q.id));
 
     actions.appendChild(chk);
@@ -118,13 +175,11 @@ function renderQuests(){
 
 function toggleQuestComplete(id){
   const q = state.quests.find(x=>x.id===id);
-  if(!q) return;
-  q.completed = !q.completed;
-  if(q.completed){
-    // award small XP
-    state.currentUser.xp += 25;
-    state.currentUser.hours = Math.round((state.currentUser.hours + 0.1)*10)/10; // tiny reward
-  }
+  if(!q || q.completed) return;
+
+  q.completed = true;
+  state.currentUser.xp += Number(q.xpReward || 25);
+  syncPlayerProgress();
   saveState();
   renderHUD();
   renderQuests();
@@ -143,14 +198,26 @@ function closeQuestModal(){
 function handleQuestCreate(e){
   e.preventDefault();
   const title = document.getElementById('questTitle').value.trim();
+  const description = document.getElementById('questDescription').value.trim();
   const category = document.getElementById('questCategory').value;
-  if(!title) return;
-  const q = { id: uid('q'), title, category, completed:false };
+  const xpReward = Number(document.getElementById('questXp').value || 25);
+  if(!title || !description) return;
+
+  const q = {
+    id: uid('q'),
+    title,
+    description,
+    category,
+    xpReward: Math.max(10, xpReward),
+    completed: false
+  };
+
   state.quests.unshift(q);
   saveState();
   closeQuestModal();
   renderQuests();
   document.getElementById('questForm').reset();
+  document.getElementById('questXp').value = 25;
 }
 
 // Sessions
@@ -269,6 +336,7 @@ function completeSkillNode(treeId, nodeId){
 
   node.completed = true;
   state.currentUser.xp += node.xp;
+  syncPlayerProgress();
   saveState();
   renderHUD();
   renderSkillTree();
@@ -301,6 +369,7 @@ function handleSessionSubmit(e){
   // increment hours and award XP locally (verification later by admin)
   state.currentUser.hours = Math.round((state.currentUser.hours + hours)*10)/10;
   state.currentUser.xp += Math.round(hours * 50);
+  syncPlayerProgress();
   saveState();
   renderSessions();
   renderHUD();
@@ -323,6 +392,8 @@ function renderBadges(){
 
 // Wire up
 function init(){
+  resetProgress();
+
   // HUD and lists
   renderHUD();
   renderQuests();

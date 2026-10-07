@@ -625,7 +625,8 @@ function verifyPassword() {
         'joshuaychang@gmail.com',
         'moussavisetareh@gmail.com',
         'mmehk23@gmail.com',
-        'ayaalmohamad14@gmail.com'
+        'ayaalmohamad14@gmail.com',
+        '344755533@tdsb.ca'
     ];
     const PENDING_MENTOR_EMAILS = [
         'jacoblukabassett@gmail.com',
