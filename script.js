@@ -580,41 +580,27 @@ function verifyPassword() {
         'allenli2020li@gmail.com',
         'felix.shen.nz@gmail.com',
         'katie.chiew@gmail.com',
-        'zain.preksha@gmail.com',
-        'ethan.soh360@gmail.com',
-        'eric.zhao021@gmail.com',
-        'mahmoud.salem2809@gmail.com',
-        'walrianzhang@gmail.com',
-        'stephanieliang38@gmail.com',
         'eumsein@gmail.com',
         'ram1.shankari@gmail.com',
         'arianadorry1@gmail.com',
         'jacobli0910@gmail.com',
         'dqlam.le@gmail.com',
-        'jonathanwangzy@gmail.com',
         'anushkachittari@gmail.com',
         'amybcan@gmail.com',
         'sarah.dai228@gmail.com',
         'chloe.huang6666@gmail.com',
         'charitykwanoioi@gmail.com',
-        'lilypadfrog123@gmail.com',
         'anya.thadani@gmail.com',
         'juliettesafarian@gmail.com',
         'muntra.dadjoo@gmail.com',
-        'cyrine.zaari@gmail.com',
         'guiroy1123@gmail.com',
         'ms.avitaah@gmail.com',
-        'maxwellw16a2@gmail.com',
         'torahmahr@gmail.com',
         'julianr.eav@gmail.com',
-        'purple7782@gmail.com',
         'jordan.s.simmonds@gmail.com',
-        'illiakianif@gmail.com',
         'livyandlulu@gmail.com',
         'arjunmittal2024@gmail.com',
         'laila.b1133@gmail.com',
-        'dimitrie.simon@gmail.com',
-        'dsolanor92@gmail.com',
         'rayzhao724@gmail.com',
         'willhong724@gmail.com',
         'jkang052021@gmail.com',
@@ -625,15 +611,10 @@ function verifyPassword() {
         'joshuaychang@gmail.com',
         'moussavisetareh@gmail.com',
         'mmehk23@gmail.com',
-        'ayaalmohamad14@gmail.com',
-        '344755533@tdsb.ca'
+        '344755533@tdsb.ca',
+        'yanjiaqiu2@gmail.com'
     ];
-    const PENDING_MENTOR_EMAILS = [
-        'jacoblukabassett@gmail.com',
-        'pirachasameya@gmail.com',
-        'tanishamazumdar5@gmail.com',
-        'treffet@gmail.com'
-    ];
+    const PENDING_MENTOR_EMAILS = [];
 
     const emailInput = document.getElementById('portalEmail');
     const passwordInput = document.getElementById('portalPassword');
