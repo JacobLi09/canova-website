@@ -423,6 +423,20 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('page-loaded');
 });
 
+window.addEventListener('DOMContentLoaded', () => {
+    const reviewsWindow = document.querySelector('.reviews-window');
+    if (!reviewsWindow) return;
+
+    document.querySelectorAll('[data-review-direction]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const direction = button.dataset.reviewDirection === 'left' ? -1 : 1;
+            const card = reviewsWindow.querySelector('.review-card');
+            const distance = card ? card.getBoundingClientRect().width + 20 : reviewsWindow.clientWidth * 0.8;
+            reviewsWindow.scrollBy({ left: direction * distance, behavior: 'smooth' });
+        });
+    });
+});
+
 // Scroll-triggered fade-in for vision section
 const observerOptions = {
     threshold: 0.2,
