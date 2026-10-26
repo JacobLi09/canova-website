@@ -427,12 +427,28 @@ window.addEventListener('DOMContentLoaded', () => {
     const reviewsWindow = document.querySelector('.reviews-window');
     if (!reviewsWindow) return;
 
+    const track = reviewsWindow.querySelector('.reviews-track');
+    if (!track) return;
+
     document.querySelectorAll('[data-review-direction]').forEach((button) => {
         button.addEventListener('click', () => {
             const direction = button.dataset.reviewDirection === 'left' ? -1 : 1;
-            const card = reviewsWindow.querySelector('.review-card');
+            const animation = track.getAnimations()[0];
+            const firstGroup = track.querySelector('.reviews-group');
+            if (!animation || !firstGroup) {
+                const card = track.querySelector('.review-card');
+                const distance = card ? card.getBoundingClientRect().width + 20 : reviewsWindow.clientWidth * 0.8;
+                reviewsWindow.scrollBy({ left: direction * distance, behavior: 'smooth' });
+                return;
+            }
+
+            const duration = Number(animation.effect.getComputedTiming().duration);
+            const cycleWidth = firstGroup.getBoundingClientRect().width;
+            const card = track.querySelector('.review-card');
             const distance = card ? card.getBoundingClientRect().width + 20 : reviewsWindow.clientWidth * 0.8;
-            reviewsWindow.scrollBy({ left: direction * distance, behavior: 'smooth' });
+            const currentTime = Number(animation.currentTime) || 0;
+            const timeOffset = duration * (distance / cycleWidth);
+            animation.currentTime = (currentTime + direction * timeOffset + duration) % duration;
         });
     });
 });
